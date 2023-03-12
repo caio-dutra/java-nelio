@@ -3,7 +3,6 @@ package _1_estrutura_sequencial;
 import java.util.Locale;
 
 public class ex_01 {
-	
 	public static void main(String[] args) {
 		
 		Locale.setDefault(Locale.US);

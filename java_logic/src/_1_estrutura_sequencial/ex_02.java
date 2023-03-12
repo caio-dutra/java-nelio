@@ -3,7 +3,6 @@ package _1_estrutura_sequencial;
 import java.util.Scanner;
 
 public class ex_02 {
-	
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);

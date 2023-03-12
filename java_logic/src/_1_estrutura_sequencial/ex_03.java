@@ -4,7 +4,6 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class ex_03 {
-	
 public static void main(String[] args) {
 		
 		Locale.setDefault(Locale.US);
