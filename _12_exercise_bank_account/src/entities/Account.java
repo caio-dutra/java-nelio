@@ -2,38 +2,35 @@ package entities;
 
 public class Account {
 	
-	private String accountHolder;
-	private int accountNumber;
+	private String holder;
+	private int number;
 	private double balance;
 	
-	public Account() {
+	public Account(String holder, int number) {
+		this.holder = holder;
+		this.number = number;
 	}
 	
-	public Account(String accountHolder, int accountNumber) {
-		this.accountHolder = accountHolder;
-		this.accountNumber = accountNumber;
+	public Account(String holder, int number, double initialDeposit) {
+		this.holder = holder;
+		this.number = number;
+		deposit(initialDeposit);
 	}
 	
-	public Account(String accountHolder, int accountNumber, double balance) {
-		this.accountHolder = accountHolder;
-		this.accountNumber = accountNumber;
-		this.balance = balance;
+	public String getHolder() {
+		return holder;
 	}
 
-	public String getAccountHolder() {
-		return accountHolder;
+	public void setHolder(String holder) {
+		this.holder = holder;
 	}
 
-	public int getAccountNumber() {
-		return accountNumber;
+	public int getNumber() {
+		return number;
 	}
 
 	public double getBalance() {
 		return balance;
-	}
-
-	public void setAccountHolder(String accountHolder) {
-		this.accountHolder = accountHolder;
 	}
 
 	public void deposit(double depositValue) {
@@ -41,12 +38,13 @@ public class Account {
 	}
 	
 	public void withdraw(double withdrawValue) {
-		balance -= 5;
-		balance -= withdrawValue;
+		balance -= withdrawValue + 5.0;
 	}
 
 	public String toString() {
-		return "Account: " + accountNumber + ", Holder: " + accountHolder + ", Balance: $ " + String.format("%.2f", balance);
+		return "Account: " + number + 
+				", Holder: " + holder + 
+				", Balance: $ " + String.format("%.2f", balance);
 	}
 
 }

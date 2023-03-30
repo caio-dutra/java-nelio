@@ -10,6 +10,8 @@ public class Main {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
+		Account acc;
+		
 		System.out.print("\nEnter account number: ");
 		int accountNumber = sc.nextInt();
 		
@@ -18,15 +20,16 @@ public class Main {
 		String accountHolder = sc.nextLine();
 		
 		System.out.print("Is there an initial deposit (y/n)? ");
-		char letter = sc.next().toLowerCase().charAt(0);
+		char response = sc.next().toLowerCase().charAt(0);
 		
-		Account acc = new Account(accountHolder, accountNumber);
 		
-		if (letter == 'y') {
+		if (response == 'y') {
 			System.out.print("Enter initial deposit value: ");
-			double balance = sc.nextDouble();
+			double initialDeposit = sc.nextDouble();
 			
-			acc.deposit(balance);
+			acc = new Account(accountHolder, accountNumber, initialDeposit);
+		} else {
+			acc = new Account(accountHolder, accountNumber);
 		}
 		
 		System.out.println("\nAccount data:");
@@ -36,14 +39,14 @@ public class Main {
 		double depositValue = sc.nextDouble();
 		acc.deposit(depositValue);
 		
-		System.out.println("Updated account data:");
+		System.out.println("\nUpdated account data:");
 		System.out.println(acc);
 		
 		System.out.print("\nEnter a withdraw value: ");
 		double withdrawValue = sc.nextDouble();
 		acc.withdraw(withdrawValue);
 		
-		System.out.println("Updated account data:");
+		System.out.println("\nUpdated account data:");
 		System.out.println(acc);
 		
 		sc.close();
