@@ -3,7 +3,9 @@ package application;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class _03_Height {
+import entities.Person;
+
+public class Main {
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
@@ -11,44 +13,42 @@ public class _03_Height {
 		System.out.print("Quantas pessoas serão digitadas? ");
 		int n = sc.nextInt();
 		
-		sc.nextLine();
-		String[] name = new String[n];
-		int[] age = new int[n];
-		double[] height = new double[n];
+		Person[] vect = new Person[n];
 		
-		for (int i=0; i<n; i++) {
+		for (int i = 0; i < vect.length; i++) {
+			sc.nextLine();
 			System.out.printf("\nDados da %da pessoa: ", i+1);
 			System.out.print("\nNome: ");
-			name[i] = sc.nextLine();
+			String name = sc.nextLine();
 			System.out.print("Idade: ");
-			age[i] = sc.nextInt();
-			sc.nextLine();
+			int age = sc.nextInt();
 			System.out.print("Altura: ");
-			height[i] = sc.nextDouble();
-			sc.nextLine();
+			double height = sc.nextDouble();
+			
+			vect[i] = new Person(name, age, height);
 		}
 		
 		double sumHeight=0;
 		int underSixteen=0;
-		for (int i=0; i<n; i++) {
-			sumHeight += height[i];
-			if (age[i] < 16) {
+		for (int i = 0; i < vect.length; i++) {
+			sumHeight += vect[i].getHeight();
+			if (vect[i].getAge() < 18) {
 				underSixteen++;
 			}
 		}
 		
 		double avgHeight = sumHeight / n;
-		double minorsPercentage = underSixteen * 100.0 / n;
-//		double minorsPercentage = ((double)underSixteen / n) * 100.0;
+		double minorsPercentage = ((double)underSixteen / n) * 100.0;
 		
 		System.out.printf("\nAltura média: %.2f\n", avgHeight);
 		System.out.printf("Pessoas com menos de 16 anos: %.1f%%\n", minorsPercentage);
 		
-		for (int i=0; i<n; i++) {
-			if (age[i] < 16) {
-				System.out.printf("%s\n", name[i]);
+		for (int i = 0; i < vect.length; i++) {
+			if (vect[i].getAge() < 16) {
+				System.out.printf("%s\n", vect[i].getName());
 			}
 		}
+		
 		
 		sc.close();
 	}
