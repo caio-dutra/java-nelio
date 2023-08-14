@@ -1,12 +1,13 @@
-package _3_finally_clock;
+package application;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Program {
+public class _1_fileExecution {
 	public static void main(String[] args) {
-		File file = new File("C:\\temp\\in.txt");
+
+		File file = new File("/home/caio_ubuntu/Videos/words.txt");
 		Scanner sc = null;
 		
 		try {
@@ -15,12 +16,12 @@ public class Program {
 				System.out.println(sc.nextLine());
 			}
 		} catch (IOException e) {
-			System.out.println("Error opening file: " + e.getMessage());
+			System.out.println("Error: " + e.getMessage());
 		} finally {
 			if (sc != null) {
 				sc.close();
 			}
 		}
+		
 	}
-
 }
